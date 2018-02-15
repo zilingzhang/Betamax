@@ -3,14 +3,23 @@
 <body>
 {% block content %}
 	{% if ratings_list %}
-		<ul>
+		<h3>Room Ratings</h3>
+<!-- 		<ul class="list-group">
 		{% for rating in ratings_list %}
-			<li><a href="{{ rating.id }}/">{{rating}} {{rating.date.time}}</a></li>
+			<li class="list-group-item"> <a href="{{ rating.id }}/">{{rating}} {{rating.date.time}}</a></li>
 		{% endfor %}
-		</ul>
+		</ul> -->
+		<div style="width:50%; padding: 15px;">
+			<ul class="list-group">
+			{% for rating in ratings_list %}
+				<li class="list-group-item"> <a href="{{ rating.id }}/">{{rating}} {{rating.date.time}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+
 	{% else %}
 		<p>No Ratings Available.</p>
 	{% endif %}
 {% endblock %}
 </body>
-	}
+}
