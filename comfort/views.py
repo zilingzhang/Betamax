@@ -6,8 +6,8 @@ from django.http import HttpResponse
 
 from .models import RoomRating
 def index(request):
-
-	return HttpResponse("Displaying Room Comfort!")
+	context = {}
+	return render(request, 'comfort/home.html', context)
 
 def detailIndex(request):
 
