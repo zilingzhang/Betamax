@@ -1,0 +1,43 @@
+{% extends "comfort/header.html" %}
+<body>
+{% block content %}
+	<table>
+		<tr>
+			<th style='float:left'>Room</th>
+			<th>{{ room_rating.room }}</th>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td>{{ room_rating.date.month }}/{{ room_rating.date.day }}/{{ room_rating.date.year }}</td>
+		</tr>
+		<tr>
+			<td>Time</td>
+			<td>{{ room_rating.date.time }}</td>
+		</tr>
+		<tr>
+			<th style='float:left'>Measurement</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<td>Overall Room Rating</td>
+			<td>{{ rating }}</td>
+		</tr>
+		<tr>
+			<td>Average Ambient Temperature</td>
+			<td>{{ rating.ave_ambient_temp }}</td>
+		</tr>
+		<tr>
+			<td>Average Radiant Temperature</td>
+			<td>{{ rating.ave_radiant_temp }}</td>
+		</tr>
+		<tr>
+			<td>Average Humidity</td>
+			<td>{{ rating.ave_humidity }}</td>
+		</tr>
+		<tr>
+			<td>Average Sound Level</td>
+			<td>{{ rating.ave_sound_level }}</td>
+		</tr>
+	</table>
+{% endblock %}
+</body>

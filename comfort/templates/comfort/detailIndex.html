@@ -1,0 +1,16 @@
+{% extends "comfort/header.html" %}
+
+<body>
+{% block content %}
+	{% if ratings_list %}
+		<ul>
+		{% for rating in ratings_list %}
+			<li><a href="{{ rating.id }}/">{{rating}} {{rating.date.time}}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No Ratings Available.</p>
+	{% endif %}
+{% endblock %}
+</body>
+	}
