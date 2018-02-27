@@ -1,0 +1,16 @@
+{% extends "comfort/header.html" %}
+
+{% block content %}
+	<div>
+		<label for="roomsel">Room Select:</label>
+
+		<select id="roomsel">
+		{% for room in rooms %}
+			<option>{{room}}</option>
+		{% endfor %}
+		</select>
+	</div>
+
+	<button type="button" class="btn btn-primary">Create</button>
+
+{% endblock %}

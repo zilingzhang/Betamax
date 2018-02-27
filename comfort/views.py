@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import RoomRating
+from .models import RoomRating, Room
 def index(request):
 	context = {}
 	return render(request, 'comfort/home.html', context)
@@ -23,4 +23,6 @@ def detail(request, room_rating_id):
 
 def create(request):
 
-	return HttpResponse("You are about to create a new room rating!")
+	rooms = Room.objects.all()
+	context = {'rooms': rooms}
+	return render(request, 'comfort/create.html', context)
