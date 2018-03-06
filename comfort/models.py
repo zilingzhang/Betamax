@@ -45,7 +45,7 @@ class Room(models.Model):
 		('SH', 'Stratton'),
 	)
 
-
+	
 	building = models.CharField(max_length=2, choices=BUILDING_CHOICES)
 	roomnumber = models.IntegerField()
 
