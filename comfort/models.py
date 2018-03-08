@@ -48,6 +48,7 @@ class Room(models.Model):
 	
 	building = models.CharField(max_length=2, choices=BUILDING_CHOICES)
 	roomnumber = models.IntegerField()
+	active = models.BooleanField(default=True)
 
 	def __str__(self):
 		return (self.building+ ' '+ str(self.roomnumber))

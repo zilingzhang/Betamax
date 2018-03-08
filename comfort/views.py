@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import RoomRating, Room
+from .forms import CreateForm
 def index(request):
 	context = {}
 	return render(request, 'comfort/home.html', context)
@@ -22,7 +23,24 @@ def detail(request, room_rating_id):
 	return render(request, 'comfort/detail.html', context)
 
 def create(request):
-
 	rooms = Room.objects.all()
-	context = {'rooms': rooms}
-	return render(request, 'comfort/create.html', context)
+	
+	context = {}
+	if request.method == "POST":
+		
+		print(request.POST['room'])
+		form = CreateForm()
+		context = {'rooms': rooms, 'form': form}
+		return render(request, 'comfort/create.html', context)
+
+	else:
+		
+		form = CreateForm()
+		context = {'rooms': rooms, 'form': form}
+		return render(request, 'comfort/create.html', context)
+
+def login(request):
+
+	context = {}
+
+	return render(request, 'comfort/auth.php', context)

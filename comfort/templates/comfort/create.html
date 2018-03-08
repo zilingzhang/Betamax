@@ -3,20 +3,24 @@
 {% block content %}
 	<div style="padding:15px">
 		<h3>Create a New rating</h3>
-		<form action="new/" method='post'>
-		{% csrf_token %}
+		<!--<form action="new/" method='post'>
+		
 		<label for="roomsel">Room Select:</label>
 
 		<select id="roomsel">
 			<option value=''>Select a Room</option>
 		{% for room in rooms %}
-			<option value={{room.pk}}>{{room}}</option>
+			<option value={{room.id}}>{{room}}</option>
 		{% endfor %}
-		</select>
+		</select>-->
+		<form method="POST" class="post-form">{% csrf_token %}
+			{{ form.building.errors }}
+			{{ form.as_p }}
+
 	
 
-	<input type="submit" value="roomsel" />
-	</form>
+			<button type="submit" class="save btn btn-default">Run</button>
+		</form>
 	</div>
 
 {% endblock %}
