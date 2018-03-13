@@ -45,7 +45,7 @@ class Room(models.Model):
 		('SH', 'Stratton'),
 	)
 
-	
+	roomscript = models.CharField(max_length=1000, default="")
 	building = models.CharField(max_length=2, choices=BUILDING_CHOICES)
 	roomnumber = models.IntegerField()
 	active = models.BooleanField(default=True)

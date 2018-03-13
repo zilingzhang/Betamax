@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+import time
 
 from .models import RoomRating, Room
 from .forms import CreateForm
@@ -29,9 +31,10 @@ def create(request):
 	if request.method == "POST":
 		
 		print(request.POST['room'])
-		form = CreateForm()
-		context = {'rooms': rooms, 'form': form}
-		return render(request, 'comfort/create.html', context)
+		room = Room.objects.get(id=request.POST['room'])
+		time.sleep(6)
+		#TODO:  run scripts to create the association tables for a new rating, raise error if unable to connect to turtlebot
+		return redirect('detail', 1);
 
 	else:
 		

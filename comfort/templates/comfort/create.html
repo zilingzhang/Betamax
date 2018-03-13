@@ -1,26 +1,28 @@
 {% extends "comfort/header.html" %}
 
 {% block content %}
-	<div style="padding:15px">
-		<h3>Create a New rating</h3>
-		<!--<form action="new/" method='post'>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#subbtn").click(function(){
+			$("#form").hide();
+			$("#spinner").show();
+		});
+	});
 		
-		<label for="roomsel">Room Select:</label>
-
-		<select id="roomsel">
-			<option value=''>Select a Room</option>
-		{% for room in rooms %}
-			<option value={{room.id}}>{{room}}</option>
-		{% endfor %}
-		</select>-->
+	</script>
+	<div style="padding:15px" id="form">
+		<h3>Create a New rating</h3>
 		<form method="POST" class="post-form">{% csrf_token %}
 			{{ form.building.errors }}
 			{{ form.as_p }}
 
 	
 
-			<button type="submit" class="save btn btn-default">Run</button>
+			<button type="submit" class="save btn btn-default" id="subbtn">Run</button>
 		</form>
+	</div>
+	<div style="text-align:center; display:none" id="spinner">
+		<i class="fa fa-cog fa-spin" style="font-size:150px"></i>
 	</div>
 
 {% endblock %}
