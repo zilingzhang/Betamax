@@ -1,5 +1,6 @@
 <html>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<head>
@@ -8,8 +9,11 @@
 			<a class='btn btn-primary btn-lg' href='/comfort/'>Home</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/create/'>New Rating</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/detail/'>Previous Ratings</a>
-			<a class='btn btn-primary btn-lg' href =''>Room History</a>
-			<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
+			{% if user.is_authenticated %}
+				<a class='btn btn-primary btn-lg' href='/accounts/logout/' title="Logout" style="float:right;"">{{ user.get_username }}</a>
+			{% else %}
+				<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
+			{% endif %}
 		</div>
 	</head>
 	<body>
