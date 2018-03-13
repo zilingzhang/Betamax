@@ -10,7 +10,7 @@ class CreateForm(forms.ModelForm):
 	class Meta:
 		model = Room
 		
-		exclude = ('id','building','roomnumber','active')
+		exclude = ('id','building','roomnumber','active', 'roomscript')
 
 	def clean(self):
 		blding = self.cleaned_data['building']
