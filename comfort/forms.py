@@ -25,3 +25,14 @@ class CreateForm(forms.ModelForm):
 
 
 		return
+
+
+class RoomUpdateForm(forms.ModelForm):
+
+	rooms = Room.objects.all()
+	room = forms.ModelChoiceField(queryset=rooms, required=True)
+	#Is_Active = forms.BooleanField()
+	class Meta:
+		model = Room
+		
+		exclude = ('id','building','roomnumber', 'roomscript')

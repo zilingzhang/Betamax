@@ -8,5 +8,6 @@ urlpatterns = [
 	url(r'^detail/(?P<room_rating_id>[0-9]+)/$', views.detail, name='detail'),
 	url(r'^create/$', views.create, name='create'),
 	url(r'^auth/$', views.login, name='login'),
+	url(r'^config/$', views.config, name='config'),
 	#url(r'^create/new/$', forms.create, name='create_new'),
 ]

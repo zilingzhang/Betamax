@@ -1,0 +1,19 @@
+{% extends "comfort/header.html" %}
+
+{% block content %}
+	<div style="padding-top: 15px; text-align: center">
+		<h4>{{ msg }}</h4>
+	</div>
+	<div style="padding:15px" id="form">
+		<h3>Update Betamax Location:</h3>
+		<form method="POST" class="post-form">{% csrf_token %}
+			{{ form.building.errors }}
+			{{ form.as_p }}
+
+	
+
+			<button type="submit" class="save btn btn-default" id="subbtn">Update</button>
+		</form>
+	</div>
+
+{% endblock %}
