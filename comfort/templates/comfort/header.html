@@ -16,20 +16,20 @@
 				<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
 			{% endif %}
 		</div>
+		<style>
+		.footer {
+			position: fixed;
+			width: 100%;
+			background-color:337ab7;
+		}
+		</style>
 	</head>
 	<body>
 		{% load static %}
 		{% block content %}
 		{% endblock %}
 	</body>
-	<style>
-	.footer {
-		position:fixed;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		background-color:337ab7;
-	</style>
 	<div class="footer">
+		<p>Footer</p>
 	</div>
 </html>
