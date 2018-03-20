@@ -3,21 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-class Measurement(models.Model):
-
-	rating = models.FloatField()
-	light = models.FloatField()
-	ambient_temp = models.FloatField()
-	radiant_temp = models.FloatField()
-	humidity = models.FloatField()
-	x_airflow = models.FloatField()
-	z_airflow = models.FloatField()
-	sound_level = models.FloatField()
-	x_pos = models.FloatField()
-	y_pos = models.FloatField()
-
-	def __str__(self):
-		return str(self.rating)
 
 class Rating(models.Model):
 	
@@ -29,13 +14,10 @@ class Rating(models.Model):
 	ave_x_airflow = models.FloatField()
 	ave_z_airflow = models.FloatField()
 	ave_sound_level = models.FloatField()
+	csvfile = models.FileField(upload_to='csvs/', null=True)
 
 	def __str__(self):
 		return str(self.value)
-
-class RatingMeasurement(models.Model):
-	rating = models.ForeignKey(Rating)
-	measurement = models.ForeignKey(Measurement)
 
 
 class Room(models.Model):
