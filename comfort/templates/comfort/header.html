@@ -18,76 +18,29 @@
 			background-color:337ab7;
 			display: inline-block;
 		}
-		
-		.header {
-			width:100%;
-			top: 0;
-			position: fixed;
-		}
 			
-		.dropdown {
-			position: relative;
-			display: inline-block;
-		}
-
-		.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			overflow: auto;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			z-index: 1;
-		}
-
-		.dropdown-content a {
-			color: black;
-			padding: 12px 16px;
-			text-decoration: none;
-			display: block;
-		}
 		</style>
-		<div class="header"><h1>βeta-Max</h1></div>
+		<div style="top:0; width:100%; position:fixed;"><h1>βeta-Max</h1></div>
 		<div class="btn-group" style="background-color:337ab7; width:100%; top: 30; position: fixed;">
 			<a class='btn btn-primary btn-lg' href='/comfort/'>Home</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/create/'>New Rating</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/detail/'>Previous Ratings</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/config/'>Room Configuration</a>
 			{% if user.is_authenticated %}
-				<a class='btn btn-primary btn-lg' href='/accounts/logout/' title="Logout" style="float:right;"">{{ user.get_username }}</a>
-			{% else %}
 				<div class="dropdown">
-					<button onclick="myFunction()" class='btn btn-primary btn-lg'>Menu</button>
-					<div id="myDropdown" class="dropdown-content">
-						<a class='btn btn-primary btn-lg' href='/admin/'>Admin</a>
-						<a class='btn btn-primary btn-lg' href='/accounts/login/'>Login</a>
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">{{ user.get_username }}
+					<span class="caret"></span></button>
+						<li><a href='/admin/'>Admin</a></li>
+						<li><a href='/accounts/logout/'>Logout</a></li>
 					</div>
-				</div>
-				
+			{% else %}
+				<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
 			{% endif %}
 		</div>
 		
-		<script>
-			function myFunction() {
-				document.getElementByID("myDropdown").classList.toggle("show");
-			}
-			window.onclick = function(event) {
-				if (!event.target.matches('.dropbtn')) {
-					var dropdowns = document.getElementsByClassName("dropdown-content");
-					var i;
-					for (i = 0; i < dropdowns.length; i++) {
-						var openDropdown = dropdowns[i];
-						if (openDropdown.classList.contains('show')) {
-							openDropdown.classList.remove('show');
-						}
-					}
-				}
-			}
-		</script>
-		
 	</head>
 	<body>
-		<div class="content">
+		<div class="content" style="top:60; bottom:30px">
 			{% load static %}
 			{% block content %}
 			{% endblock %}
