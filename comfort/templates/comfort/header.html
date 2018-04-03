@@ -20,8 +20,9 @@
 		}
 			
 		</style>
-		<div style="top:0; width:100%; position:fixed;"><h1>βeta-Max</h1></div>
-		<div class="btn-group" style="background-color:337ab7; width:100%; top: 30; position: fixed;">
+		<div style="position: fixed; width: 100%; background-color: d3d3d3;">
+		<div style="top:0; width:100%; "><h1>βeta-Max</h1></div>
+		<div class="topnav" style="background-color:337ab7; width:100%;">
 			<a class='btn btn-primary btn-lg' href='/comfort/'>Home</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/create/'>New Rating</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/detail/'>Previous Ratings</a>
@@ -37,18 +38,24 @@
 				<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
 			{% endif %}
 		</div>
+		</div>
 		
 	</head>
 	<body>
 		<div class="content" style="top:60; bottom:30px">
+			<div style="padding-top: 80px"></div>
 			{% load static %}
 			{% block content %}
 			{% endblock %}
+			<div style="padding-bottom: 30px"></div>
 		</div>
 	</body>
-	<div class="footer">
-		<p>Footer</p>
-	</div>
+	<footer>
+		<div class="footer" style="background-color:337ab7; width: 100%;">
+		
+		</div>
+	</footer>
+	
 </html>
 
 

@@ -33,30 +33,26 @@ def create(request):
 		
 		ssh2 = paramiko.SSHClient()
 		ssh2.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-		ssh = paramiko.SSHClient()
-		ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		# ssh = paramiko.SSHClient()
+		# ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-		#Above is not very secure, recomend change
-		ssh.connect('138.67.207.138',22,'hcr','HCR')
-		stdin, stdout, stderr = ssh.exec_command('pwd')
-		ssh3 = paramiko.SSHClient()
-		ssh3.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		# #Above is not very secure, recomend change
+		# ssh.connect('138.67.196.184',22,'hcr','HCR')
+		# stdin, stdout, stderr = ssh.exec_command('roslaunch turtlebot_bringup minimal.launch')
+		# ssh3 = paramiko.SSHClient()
+		# ssh3.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-		#Above is not very secure, recomend change
-		ssh3.connect('138.67.207.138',22,'hcr','HCR')
-		stdin, stdout, stderr = ssh3.exec_command('pwd')
-		ssh4 = paramiko.SSHClient()
-		ssh4.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-		#Above is not very secure, recomend change
-		ssh4.connect('138.67.207.138',22,'hcr','HCR')
-		stdin, stdout, stderr = ssh4.exec_command('pwd')
-		ssh2.connect('138.67.207.138',22,'hcr','HCR')
+		# #Above is not very secure, recomend change
+		# ssh3.connect('138.67.196.184',22,'hcr','HCR')
+		# stdin3, stdout3, stderr3 = ssh3.exec_command('roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/hcr/maps/betterfrontroom.yaml')
+		# while(stdout3.read()!="ODOM RECEIVED"):
+		# 	print(stdout3.read())
+		ssh2.connect('138.67.196.184',22,'hcr','HCR')
 		
-		stdin2, stdout2, stderr2 = ssh2.exec_command('python comfortScript3_15.py')
+		stdin2, stdout2, stderr2 = ssh2.exec_command('python helloworld/turtlebot/movement_algo.py')
 		#print(stdin)
-		print(stdout.read())
 		print(stdout2.read())
+		print(stderr2.read())
 		#print(stderr)
 		#TODO:  run scripts to create the association tables for a new rating, raise error if unable to connect to turtlebot
 		return redirect('detail', 1);
