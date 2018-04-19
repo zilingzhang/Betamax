@@ -14,7 +14,7 @@ class Rating(models.Model):
 	ave_x_airflow = models.FloatField()
 	ave_z_airflow = models.FloatField()
 	ave_sound_level = models.FloatField()
-	csvfile = models.FileField(upload_to='csvs/', null=True)
+	csvfile = models.FileField(upload_to='static/csvs/', null=True)
 
 	def __str__(self):
 		return str(self.value)

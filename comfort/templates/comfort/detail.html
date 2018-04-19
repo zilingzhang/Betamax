@@ -2,7 +2,7 @@
 <body>
 {% block content %}
 	<div class=container style="padding: 15px">
-		<h2>Room Detail</h2>
+		<h2>Rating {{room_rating.pk}} Detail</h2>
 		<table class="table table-bordered">
 			<tr>
 				<th>Room</th>
@@ -41,6 +41,10 @@
 				<td>{{ rating.ave_sound_level }}</td>
 			</tr>
 		</table>
+	</div>
+	<div class="btn-group" style="padding-left: 30px">
+		<a class="btn btn-primary" href="/static/comfort/comfortrobot.exe" download>Download GUI File</a>
+		<a class="btn btn-primary" href="{{rating.file}}" download>Download CSV for this Rating</a>
 	</div>
 {% endblock %}
 </body>

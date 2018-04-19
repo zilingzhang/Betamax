@@ -28,12 +28,12 @@
 			<a class='btn btn-primary btn-lg' href='/comfort/detail/'>Previous Ratings</a>
 			<a class='btn btn-primary btn-lg' href='/comfort/config/'>Room Configuration</a>
 			{% if user.is_authenticated %}
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">{{ user.get_username }}
-					<span class="caret"></span></button>
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">{{ user.get_username }}
+				<span class="caret"></span></button>
+					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href='/admin/'>Admin</a></li>
 						<li><a href='/accounts/logout/'>Logout</a></li>
-					</div>
+					</ul>
 			{% else %}
 				<a class='btn btn-primary btn-lg' href='/accounts/login/' style="float:right;">Login</a>
 			{% endif %}

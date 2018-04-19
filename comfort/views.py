@@ -3,10 +3,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
-import time, paramiko
+import time, paramiko, subprocess
 
-from .models import RoomRating, Room
+from .models import RoomRating, Room, Rating
 from .forms import CreateForm, RoomUpdateForm
 def index(request):
 	context = {}
@@ -20,9 +21,11 @@ def detailIndex(request):
 
 def detail(request, room_rating_id):
 	rating = RoomRating.objects.get(pk=room_rating_id)
+	#subprocess.check_output('/scripts/ComfortRobot.exe')
 	context = {'rating': rating.rating, 'room_rating': rating}
 	return render(request, 'comfort/detail.html', context)
 
+@login_required
 def create(request):
 	rooms = Room.objects.all()
 	
@@ -30,29 +33,25 @@ def create(request):
 	if request.method == "POST":
 		
 		room = Room.objects.get(id=request.POST['room'])
+		file = ""
 		
 		ssh2 = paramiko.SSHClient()
 		ssh2.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-		# ssh = paramiko.SSHClient()
-		# ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-		# #Above is not very secure, recomend change
-		# ssh.connect('138.67.196.184',22,'hcr','HCR')
-		# stdin, stdout, stderr = ssh.exec_command('roslaunch turtlebot_bringup minimal.launch')
-		# ssh3 = paramiko.SSHClient()
-		# ssh3.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-		# #Above is not very secure, recomend change
-		# ssh3.connect('138.67.196.184',22,'hcr','HCR')
-		# stdin3, stdout3, stderr3 = ssh3.exec_command('roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/hcr/maps/betterfrontroom.yaml')
-		# while(stdout3.read()!="ODOM RECEIVED"):
-		# 	print(stdout3.read())
-		ssh2.connect('138.67.196.184',22,'hcr','HCR')
+		ssh2.connect('138.67.205.169',22,'hcr','HCR')
+	
+		stdin2, stdout2, stderr2 = ssh2.exec_command(command='echo $PYTHONPATH',bufsize=-1,timeout=None,get_pty=True)
 		
-		stdin2, stdout2, stderr2 = ssh2.exec_command('python helloworld/turtlebot/movement_algo.py')
+		#stdin2, stdout2, stderr2 = ssh2.exec_command('pwd')
 		#print(stdin)
-		print(stdout2.read())
+		# chan=ssh2.invoke_shell()
+		# chan.send('echo $PATH')
+		# print(chan.recv(1024))
+		test = stdout2.read()
+		print(test)
 		print(stderr2.read())
+		#rate = Rating(ave_light=light,ave_ambient_temp=ambtemp, ave_radiant_temp=radtemp, \
+			#ave_humidity=hum, ave_x_airflow=xflow, ave_y_airflow=yflow, csvfile=file)
+		#stdin2, stdout2, stderr2 = ssh2.exec_command('scp hcr@stuff:path static/csvs/')
 		#print(stderr)
 		#TODO:  run scripts to create the association tables for a new rating, raise error if unable to connect to turtlebot
 		return redirect('detail', 1);
@@ -69,6 +68,8 @@ def login(request):
 
 	return render(request, 'registration/login.html', context)
 
+
+@login_required
 def config(request):
 	msg = ""
 	if request.method == "POST":
