@@ -40,7 +40,7 @@ def create(request):
 		ssh2.connect('138.67.205.169',22,'hcr','HCR')
 	
 		stdin2, stdout2, stderr2 = ssh2.exec_command(command='echo $PYTHONPATH',bufsize=-1,timeout=None,get_pty=True)
-		
+		#DOES NOT WORK, PATH on parimiko object does not include ros libraries, errors out when trying to run script
 		#stdin2, stdout2, stderr2 = ssh2.exec_command('pwd')
 		#print(stdin)
 		# chan=ssh2.invoke_shell()
