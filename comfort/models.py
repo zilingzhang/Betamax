@@ -37,8 +37,8 @@ class Room(models.Model):
 
 class RoomRating(models.Model):
 
-	rating = models.ForeignKey(Rating)
-	room = models.ForeignKey(Room)
+	rating = models.ForeignKey(Rating,on_delete=models.PROTECT)
+	room = models.ForeignKey(Room,on_delete=models.PROTECT)
 	date = models.DateTimeField('Date Measured')
 
 	def __str__(self):
